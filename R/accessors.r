@@ -17,9 +17,12 @@ setMethod("author", signature(x="book"),
 
 
 setMethod("text", signature(x="book"),
-  function(x)
+  function(x, with.license=TRUE)
   {
-    return( x@text )
+    if (with.license)
+      return( paste(x@header, x@text, x@license, collapse="\n") )
+    else
+      return( paste(x@text, collapse="\n") )
   }
 )
 

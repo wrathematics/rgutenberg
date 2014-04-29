@@ -6,7 +6,7 @@ setGeneric(name="author",
 
 
 setGeneric(name="text", 
-  function(x)
+  function(x, ...)
     standardGeneric("text"),
   package="rgutenberg"
 )

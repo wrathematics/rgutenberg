@@ -6,6 +6,7 @@ setClass(
     url="character",
     title="character",
     author="character",
+    header="character",
     text="character",
     nlines="numeric",
     nwords="numeric",

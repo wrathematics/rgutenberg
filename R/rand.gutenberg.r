@@ -1,8 +1,21 @@
+check.ban <- function(html.parsed)
+{
+  msg <- "You have used Project Gutenberg quite a lot today or clicked through it really fast. To make sure you are human, we ask you to resolve this captcha:"
+  test <- XML::xpathSApply(html.parsed, "//div[@id='dialog' and @title='Are you human?']/p", xmlValue)
+  
+  if (isTRUE(test == msg))
+    stop("You have used this utility too much in a short period of time.  Wait a few hours and try again.")
+}
+
+
+
 rgutenberg <- function()
 {
   url.rand <- "http://www.gutenberg.org/ebooks/search/?sort_order=random"
   html <- RCurl::getURL(url.rand, followlocation=TRUE, .opts=curl_opts)
   html.parsed <- XML::htmlParse(html, asText=TRUE)
+  
+  check.ban(html.parsed=html.parsed)
   
   books <- XML::xpathSApply(html.parsed, "//li[@class='booklink']/a[@class='link']/@href")
   book <- sample(books, size=1L)
@@ -25,10 +38,11 @@ gutenberg <- function(book)
   line.start <- which(grepl(text, pattern=start))
   line.end <- which(grepl(text, pattern=end))
   
+  header <- text[1L:line.start]
   text <- text[(line.start+1L):(line.end-1L)]
   nlines <- length(text)
   nwords <- sum(sapply(X=text, FUN=function(l) length(unlist(strsplit(x=l, split=" ")))))
-  text <- paste(text, collapse="\n")
+#  text <- paste(text, collapse="\n")
   
   html <- RCurl::getURL(paste("http://www.gutenberg.org", book, sep=""), followlocation=TRUE, .opts=curl_opts)
   html.parsed <- XML::htmlParse(html, asText=TRUE)
@@ -41,7 +55,7 @@ gutenberg <- function(book)
   language <- XML::xpathSApply(html.parsed, "//tr[@itemprop='inLanguage']/td", xmlValue)
   
   
-  gut <- new("book", url=url.book, title=title, author=author, text=text, nlines=nlines, nwords=nwords, language=language, license=pg.license())
+  gut <- new("book", url=url.book, title=title, author=author, header=header, text=text, nlines=nlines, nwords=nwords, language=language, license=pg.license())
   
   return( gut )
 }

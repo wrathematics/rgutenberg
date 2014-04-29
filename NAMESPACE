@@ -1,3 +1,7 @@
 import(methods, RCurl, XML, wordcloud)
 
-exportPattern("^[[:alpha:]]+")
+exportClasses("book")
+
+export(rgutenberg)
+
+exportMethods("wordcloud")

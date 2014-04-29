@@ -1,6 +1,7 @@
 setMethod("wordcloud", signature(words="book"),
   function(words)
   {
-    return( wordcloud(words=words@text) )
+    text <- text(words, with.license=FALSE)
+    return( wordcloud(words=text) )
   }
 )
