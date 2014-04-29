@@ -1,0 +1,3 @@
+import(methods, RCurl, XML, wordcloud)
+
+exportPattern("^[[:alpha:]]+")
