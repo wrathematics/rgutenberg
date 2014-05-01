@@ -4,4 +4,6 @@ exportClasses("book")
 
 export(rgutenberg)
 
-exportMethods("wordcloud")
+exportMethods("wordcloud", 
+  "author", "text", "language", "license"
+)
