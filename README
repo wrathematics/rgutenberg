@@ -1,3 +1,5 @@
+What is this?
+====================================================================
 This R package downloads a random Project Gutenberg book.  The 
 purpose of this package is to offer for text, via the rgutenberg()
 function, somewhat similar functionality to that of rnorm(), runif(), 
@@ -9,6 +11,23 @@ that would be insane.  Please also be considerate to their servers
 and don't abuse this functionality.
 
 
+
+How do I install it?
+====================================================================
+To install the package from github, I recommend using Hadley Wickham's
+devtools package, which you can get from the CRAN.  After installing that,
+you can enter
+
+library(devtools)
+install_github(username="wrathematics", repo="rgutenberg")
+
+into an R terminal to install this package.  See the manual and demos
+for an explanation of usage.
+
+
+
+Anything else I should know?
+====================================================================
 Any text downloaded in this way is subject to the Project Gutenberg 
 license.  The condensed version (taken from the Project Gutenberg 
 site) is:
