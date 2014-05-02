@@ -47,5 +47,16 @@ http://www.gutenberg.org/wiki/Gutenberg:The_Project_Gutenberg_License#Using_the_
 or by entering the command pg.license() into R.
 
 
+
+Software license and disclaimer
+====================================================================
 Neither the package author, nor the package itself, has any 
 affiliation with Project Gutenberg.
+
+This software is licensed under the permissive 2-clause BSD license.
+You can find a quick summary of the license here:
+
+https://tldrlegal.com/license/bsd-2-clause-license-%28freebsd%29
+
+The full terms of the license (it's very short) are contained in the
+LICENSE file in the root directory of the project.
