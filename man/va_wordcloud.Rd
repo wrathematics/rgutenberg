@@ -1,72 +1,40 @@
 \name{wordcloud}
-\alias{PCA}
+\alias{wordcloud}
 \docType{methods}
 
-\alias{prcomp-method}
-\alias{prcomp,ddmatrix-method}
-\alias{prcomp}
+\alias{wordcloud-method}
+\alias{wordcloud,book-method}
+\alias{wordcloud}
 
 
-\title{ Principal Components Analysis }
+\title{ wordclouds }
 \description{
-  Performs the principal components analysis.
+  Creates a wordcloud for a downloaded text using the wordcloud package.
 }
 \section{Methods}{
 \describe{
-\item{\code{signature(x = "ddmatrix")}}{}
+\item{\code{signature(words = "book")}}{}
 }
 }
 \usage{
-\S4method{prcomp}{ddmatrix}(x, retx = TRUE, center = TRUE, 
-  scale. = FALSE, tol = NULL)
+\S4method{wordcloud}{book}(words)
 }
 \arguments{
-  \item{x}{numeric distributed matrix.}
-  \item{center}{logical value, determines whether or not columns are
-  zero centered}
-  \item{scale.}{logical value, determines whether or not columns 
-  are rescaled to unit variance}
-  \item{retx}{logical, indicates whether the rotated variables
-  should be returned}
-  \item{tol}{a value indicating the magnitude below which components
-  should be omitted. (Components are omitted if their standard
-  deviations are less than or equal to \code{tol} times the standard
-  deviation of the first component.)  With the default null
-  setting, no components are omitted.  Other settings for tol
-  could be \code{tol = 0} or \code{tol = sqrt(.Machine$double.eps)},
-  which would omit essentially constant components}
+  \item{words}{a book object.}
 }
 \details{
-  \code{prcomp()} performs the principal components analysis on 
-  the data matrix by taking the SVD. Sometimes core R and 
-  pbdDMAT will disagree slightly in what the rotated variables are
-  because of how the SVD is caluclated. See the details section of 
-  \code{La.svd()} under \code{\link{LinAlg}} for details.
-  more details.
-}
-\value{
-  Returns a list.
-}
-\author{
-  R Core Team, Drew Schmidt \email{schmidt AT math.utk.edu}, 
-  Wei-Chen Chen, George Ostrouchov, and Pragneshkumar Patel.
+  This is an example showing how one can use the information stored in 
+  a book object to do analysis.  Exactly as in the code here, you would
+  call \code{text(book, with.license=FALSE)} to extract the text for
+  analysis.  Note that doing so does not absolve you from the Project
+  Gutenberg license.
 }
 \examples{
 \dontrun{
-# Save code in a file "demo.r" and run with 2 processors by
-# > mpiexec -np 2 Rscript demo.r
+library(rgutenberg)
+x <- rgutenberg()
 
-library(pbdDMAT, quiet = TRUE)
-init.grid()
-
-comm.set.seed(diff=T)
-
-x <- ddmatrix("rnorm", 10, 10)
-
-y <- prcomp(x)
-comm.print(y)
-
-finalize()
+wordcloud(x)
 }
 }
 \keyword{Methods}
