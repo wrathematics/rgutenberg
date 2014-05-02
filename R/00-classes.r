@@ -8,8 +8,6 @@ setClass(
     author="character",
     header="character",
     text="character",
-    nlines="numeric",
-    nwords="numeric",
     language="character",
     license="project_gutenberg_license"
   )

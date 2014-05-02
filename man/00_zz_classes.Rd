@@ -26,7 +26,11 @@
 }
 }
 \section{Details}{
-  .
+  The specification for a book object is as follows:
+  
+  * The slot \code{text} consists of the corpus itself, stored as character
+    vector.  This should be the equivalent of calling \code{readLines()} on
+    an unformatted text representation of the book.
 }
 \seealso{
   \code{\link{rgutenberg}}

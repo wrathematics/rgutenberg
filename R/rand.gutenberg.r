@@ -40,8 +40,6 @@ gutenberg <- function(book)
   
   header <- text[1L:line.start]
   text <- text[(line.start+1L):(line.end-1L)]
-  nlines <- length(text)
-  nwords <- sum(sapply(X=text, FUN=function(l) length(unlist(strsplit(x=l, split=" ")))))
 #  text <- paste(text, collapse="\n")
   
   html <- RCurl::getURL(paste("http://www.gutenberg.org", book, sep=""), followlocation=TRUE, .opts=curl_opts)
@@ -55,7 +53,7 @@ gutenberg <- function(book)
   language <- XML::xpathSApply(html.parsed, "//tr[@itemprop='inLanguage']/td", xmlValue)
   
   
-  gut <- new("book", url=url.book, title=title, author=author, header=header, text=text, nlines=nlines, nwords=nwords, language=language, license=pg.license())
+  gut <- new("book", url=url.book, title=title, author=author, header=header, text=text, language=language, license=pg.license())
   
   return( gut )
 }
