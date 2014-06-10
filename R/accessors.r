@@ -17,6 +17,15 @@ setMethod("author", signature(x="book"),
 
 
 setMethod("text", signature(x="book"),
+  function(x)
+  {
+    return( paste(x@text, collapse="\n") )
+  }
+)
+
+
+
+setMethod("text", signature(x="pgbook"),
   function(x, with.license=TRUE)
   {
     if (with.license)
@@ -37,7 +46,7 @@ setMethod("language", signature(x="book"),
 
 
 
-setMethod("license", signature(x="book"),
+setMethod("license", signature(x="pjbook"),
   function(x)
   {
     return( x@license )

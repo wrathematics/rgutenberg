@@ -1,6 +1,23 @@
 setMethod("print", signature(x="book"),
   function(x)
   {
+    str <- character(3L)
+    
+    str[1L] <- paste("Title: ", gsub(x=x@title, pattern="\r", replacement=". "))
+    str[2L] <- paste("Author: ", paste(x@author, collapse=", "))
+    str[3L] <- paste("Language: ", x@language, "\n")
+    
+    cat(paste(str, collapse="\n"))
+    
+    invisible()
+  }
+)
+
+
+
+setMethod("print", signature(x="pgbook"),
+  function(x)
+  {
     str <- character(5L)
     
     str[1L] <- "This eBook is for the use of anyone anywhere at no cost and with almost no restrictions whatsoever.  You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org\n"
@@ -18,6 +35,14 @@ setMethod("print", signature(x="book"),
 
 
 setMethod("show", signature(object="book"),
+  function(object)
+  {
+    print(x=object)
+    invisible()
+  }
+)
+
+setMethod("show", signature(object="pjbook"),
   function(object)
   {
     print(x=object)

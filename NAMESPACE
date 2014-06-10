@@ -1,9 +1,11 @@
 import(methods, RCurl, XML, wordcloud)
 
-exportClasses("book")
+exportClasses("book", "pgbook")
 
-export(rgutenberg, pg.license)
+export(rgutenberg, pg.license, gutenbook)
 
 exportMethods("wordcloud", "summary",
-  "author", "text", "language", "license", "print", "show"
+  "author", "text", "language", "license", 
+  "print", "show",
+  "as.book"
 )

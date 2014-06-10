@@ -20,17 +20,21 @@ rgutenberg <- function()
   books <- XML::xpathSApply(html.parsed, "//li[@class='booklink']/a[@class='link']/@href")
   book <- sample(books, size=1L)
   
-  gut <- gutenberg(book=book)
+  url.book <- paste("http://www.gutenberg.org", book, ".txt.utf-8", sep="")
+  
+  gut <- gutenbook(url=url.book)
   
   return( gut )
 }
 
 
 
-gutenberg <- function(book)
+gutenbook <- function(url)
 {
-  url.book <- paste("http://www.gutenberg.org", book, ".txt.utf-8", sep="")
-  text <- readLines(url.book)
+  if (missing(url))
+    stop("You must supply a valid url for this method; otherwise use rgutenberg()")
+  
+  text <- readLines(url)
   
   start <- "[***] START OF THIS PROJECT GUTENBERG"
   end <- "[***][ ]?END OF THE PROJECT GUTENBERG|[***][ ]?END OF THIS PROJECT GUTENBERG"
@@ -40,9 +44,12 @@ gutenberg <- function(book)
   
   header <- text[1L:line.start]
   text <- text[(line.start+1L):(line.end-1L)]
-#  text <- paste(text, collapse="\n")
   
-  html <- RCurl::getURL(paste("http://www.gutenberg.org", book, sep=""), followlocation=TRUE, .opts=curl_opts)
+  book <- sub(x=url, pattern="^(.*\\/)", replacement="")
+  book <- sub(x=book, pattern=".txt.utf-8", replacement="")
+  
+  html <- RCurl::getURL(paste("http://www.gutenberg.org/ebooks/", book, sep=""), followlocation=TRUE, .opts=curl_opts)
+ 
   html.parsed <- XML::htmlParse(html, asText=TRUE)
   
   title <- XML::xpathSApply(html.parsed, "//tr/td[@itemprop='headline']", xmlValue)
@@ -53,8 +60,9 @@ gutenberg <- function(book)
   language <- XML::xpathSApply(html.parsed, "//tr[@itemprop='inLanguage']/td", xmlValue)
   
   
-  gut <- new("book", url=url.book, title=title, author=author, header=header, text=text, language=language, license=pg.license())
+  gut <- new("pgbook", url=url, title=title, author=author, header=header, text=text, language=language, license=pg.license())
   
   return( gut )
 }
+
 

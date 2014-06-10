@@ -3,6 +3,6 @@ setMethod("wordcloud", signature(words="book"),
   {
     text <- text(words, with.license=FALSE)
     
-    return( wordcloud(words=text) )
+    return( wordcloud::wordcloud(words=text) )
   }
 )
