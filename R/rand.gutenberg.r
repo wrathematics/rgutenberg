@@ -29,6 +29,19 @@ rgutenberg <- function()
 
 
 
+
+book.metadata <- function(text, check)
+{
+  meta.ind <- grep(x=text, pattern=check)
+  if (length(meta.ind) == 0)
+    meta <- "Unknown"
+  else
+    meta <- sub(x=text[meta.ind[1L]], pattern=check, replacement="")
+  
+  return( meta )
+}
+
+
 gutenbook <- function(url)
 {
   if (missing(url))
@@ -42,22 +55,28 @@ gutenbook <- function(url)
   line.start <- which(grepl(text, pattern=start))
   line.end <- which(grepl(text, pattern=end))
   
+  
+  title <- book.metadata(text=text, check="Title: ")
+  author <- book.metadata(text=text, check="Author: ")
+  language <- book.metadata(text=text, check="Language: ")
+  
   header <- text[1L:line.start]
   text <- text[(line.start+1L):(line.end-1L)]
   
-  book <- sub(x=url, pattern="^(.*\\/)", replacement="")
-  book <- sub(x=book, pattern=".txt.utf-8", replacement="")
+#  book <- sub(x=url, pattern="^(.*\\/)", replacement="")
+#  book <- sub(x=book, pattern=".txt.utf-8", replacement="")
+#  
+#  html <- RCurl::getURL(paste("http://www.gutenberg.org/ebooks/", book, sep=""), followlocation=TRUE, .opts=curl_opts)
+# 
+#  html.parsed <- XML::htmlParse(html, asText=TRUE)
+#  
+#  title <- XML::xpathSApply(html.parsed, "//tr/td[@itemprop='headline']", xmlValue)
+#  title <- gsub(x=title, pattern="\n", replacement="")
+#  
+#  author <- XML::xpathSApply(html.parsed, "//a[@itemprop='creator']", xmlValue)
+#  
+#  language <- XML::xpathSApply(html.parsed, "//tr[@itemprop='inLanguage']/td", xmlValue)
   
-  html <- RCurl::getURL(paste("http://www.gutenberg.org/ebooks/", book, sep=""), followlocation=TRUE, .opts=curl_opts)
- 
-  html.parsed <- XML::htmlParse(html, asText=TRUE)
-  
-  title <- XML::xpathSApply(html.parsed, "//tr/td[@itemprop='headline']", xmlValue)
-  title <- gsub(x=title, pattern="\n", replacement="")
-  
-  author <- XML::xpathSApply(html.parsed, "//a[@itemprop='creator']", xmlValue)
-  
-  language <- XML::xpathSApply(html.parsed, "//tr[@itemprop='inLanguage']/td", xmlValue)
   
   
   gut <- new("pgbook", url=url, title=title, author=author, header=header, text=text, language=language, license=pg.license())
