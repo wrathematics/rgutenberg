@@ -4,8 +4,10 @@ Title: Random Project Gutenberg Text
 Version: 1.0
 Description: Gets a random text from Project Gutenberg.
 License: BSD 2-clause License + file LICENSE
-Depends: R (>= 2.14.0), methods, RCurl, XML, wordcloud
+Imports: wordcloud
+Depends: R (>= 2.14.0), methods, RCurl, XML
 NeedsCompilation: no
+LazyLoad: yes
 ByteCompile: yes
 Author: Drew Schmidt
 Maintainer: Drew Schmidt <wrathematics@gmail.com>

@@ -24,6 +24,7 @@
 \section{Methods}{
 \describe{
 \item{\code{signature(x = "book")}}{}
+\item{\code{signature(x = "pgbook")}}{}
 }
 }
 \usage{

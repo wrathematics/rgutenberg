@@ -367,9 +367,3 @@ An alternative method of locating eBooks:
   return( license )
 }
 
-
-print.project_gutenberg_license <- function(x)
-{
-  cat(x)
-}
-

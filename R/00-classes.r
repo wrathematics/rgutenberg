@@ -19,18 +19,14 @@ setClass(
 setClass(
   Class="pgbook",
   representation=representation(
-    text="character",
     url="character",
-    title="character",
-    author="character",
     header="character",
-    language="character",
     license="project_gutenberg_license"
   ), 
   prototype=prototype(
     url="",
     header="",
-    license=license()
+    license=""
   ),
   contains="book"
 )

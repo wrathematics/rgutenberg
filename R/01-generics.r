@@ -1,3 +1,8 @@
+#setGeneric(name="print", useAsDefault=base::print, package="rgutenberg")
+#setGeneric(name="summary", useAsDefault=base::summary, package="rgutenberg")
+setGeneric(name="wordcloud", useAsDefault=wordcloud::wordcloud, package="rgutenberg")
+
+
 setGeneric(name="author", 
   function(x)
     standardGeneric("author"),

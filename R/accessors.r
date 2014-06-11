@@ -46,11 +46,13 @@ setMethod("language", signature(x="book"),
 
 
 
-setMethod("license", signature(x="pjbook"),
+setMethod("license", signature(x="pgbook"),
   function(x)
   {
     return( x@license )
   }
 )
 
-
+setMethod("license", signature(x="missing"),
+  base::license
+)
