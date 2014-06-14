@@ -8,6 +8,16 @@
 \description{
   The complete text of Samuel Taylor Coleridge's "Rime of the 
   Ancient Mariner", my favorite poem.
+  
+  "Day after day, day after day,
+  We stuck, nor breath nor motion;
+  As idle as a painted ship
+  Upon a painted ocean."
+  -- Coleridge
+  
+  "Sailing on and on and North across the sea
+  Sailing on and on and North 'till all is calm" 
+  -- Bruce Dickinson, Iron Maiden.
 }
 \format{
   A \code{pg.book} object.

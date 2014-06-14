@@ -8,6 +8,8 @@
 \description{
   The complete text of Samuel Clemens' (Mark Twain's) "Life on the
   Mississippi".
+  
+  "In the South the war is what A.D. is elsewhere; they date from it."
 }
 \format{
   A \code{pg.book} object.

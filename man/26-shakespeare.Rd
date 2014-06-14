@@ -7,6 +7,8 @@
 
 \description{
   The complete works of William Shakespeare.
+
+  "For in that sleep of death, what dreams may come." 
 }
 \format{
   A \code{pg.book} object.

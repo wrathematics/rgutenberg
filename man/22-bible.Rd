@@ -7,6 +7,11 @@
 
 \description{
   The complete text of the King James Bible.
+  
+  "Thou hypocrite, first cast out the beam out of thine own eye; 
+  and then shalt thou see clearly to cast out the mote out of 
+  thy brother's eye.",  Matthew 7:5.
+
 }
 \format{
   A \code{pg.book} object.
