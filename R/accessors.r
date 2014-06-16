@@ -26,7 +26,7 @@ setMethod("text", signature(x="book"),
 
 
 setMethod("text", signature(x="pgbook"),
-  function(x, with.license=TRUE)
+  function(x, with.license=FALSE)
   {
     if (with.license)
       return( paste(x@header, x@text, x@license, collapse="\n") )

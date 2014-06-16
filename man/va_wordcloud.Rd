@@ -17,10 +17,16 @@
 }
 }
 \usage{
-\S4method{wordcloud}{book}(words)
+\S4method{wordcloud}{book}(words, freq, scale = c(4, 0.5), min.freq = 3,
+  max.words = Inf, random.order = TRUE, random.color = FALSE, 
+  rot.per = 0.1, colors = "black", ordered.colors = FALSE, 
+  use.r.layout = FALSE, fixed.asp = TRUE, ...)
 }
 \arguments{
   \item{words}{a book object.}
+  \item{freq,scale,min.freq,max.words,random.order,random.color,rot.per,
+  colors,ordered.colors,use.r.layout,fixed.asp,...}{As in the 
+  wordcloud package's \code{wordcloud()} function.}
 }
 \details{
   This is an example showing how one can use the information stored in 

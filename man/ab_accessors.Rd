@@ -11,10 +11,11 @@
 
 \alias{language-method}
 \alias{language,book-method}
+\alias{language,pgbook-method}
 \alias{language}
 
 \alias{license-method}
-\alias{license,book-method}
+\alias{license,pgbook-method}
 \alias{license}
 
 \title{slot accessors}
@@ -31,7 +32,8 @@
 \S4method{author}{book}(x)
 \S4method{text}{book}(x)
 \S4method{language}{book}(x)
-\S4method{license}{book}(x)
+\S4method{language}{pgbook}(x, with.license=FALSE)
+\S4method{license}{pgbook}(x)
 }
 \arguments{
   \item{x}{book object}

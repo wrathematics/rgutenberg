@@ -1,25 +1,24 @@
-\name{beowulf}
-\alias{beowulf}
+\name{inferno}
+\alias{inferno}
 
 \docType{data}
 
-\title{Beowulf}
+\title{Inferno}
 
 \description{
-  The complete text of Beowulf.
+  The complete text of Dante's "Inferno".
   
-  "Hw\U00E6t!"
-
+  "All hope abandon ye who enter here."
 }
 \format{
   A \code{pg.book} object.
 }
 \details{
 \tabular{ll}{
-  Title:    \tab Beowulf \cr
-  Author:   \tab Unknown \cr
+  Title:    \tab Inferno \cr
+  Author:   \tab Dante Alighieri \cr
   Language: \tab English \cr
-  URL:      \tab \url{http://www.gutenberg.org/ebooks/16328.txt.utf-8}
+  URL:      \tab \url{http://www.gutenberg.org/ebooks/8789.txt.utf-8}
 }
   
   To access the full text unmodified from its Project Gutenberg
